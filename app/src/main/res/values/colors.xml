@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPing">#4CAF50</color>
+    <color name="colorPingRed">#FF5252</color>
+    <color name="colorConfigType">#5B6ABF</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="color_fab_active">#5B6ABF</color>
+    <color name="color_fab_inactive">#9C9C9C</color>
+    <color name="divider_color_light">#E0E0E0</color>
+    <color name="colorIndicator">@color/md_theme_primary</color>
+
+    <!-- 云通 - Primary: Indigo Blue -->
+    <color name="md_theme_primary">#5B6ABF</color>
+    <color name="md_theme_onPrimary">#FFFFFF</color>
+    <color name="md_theme_primaryContainer">#DEE0FF</color>
+    <color name="md_theme_onPrimaryContainer">#001159</color>
+
+    <!-- Secondary: Teal -->
+    <color name="md_theme_secondary">#00897B</color>
+    <color name="md_theme_onSecondary">#FFFFFF</color>
+    <color name="md_theme_secondaryContainer">#A7F5EC</color>
+    <color name="md_theme_onSecondaryContainer">#00201E</color>
+
+    <!-- Tertiary: Amber accent -->
+    <color name="md_theme_tertiary">#FFA000</color>
+    <color name="md_theme_onTertiary">#FFFFFF</color>
+    <color name="md_theme_tertiaryContainer">#FFDDB3</color>
+    <color name="md_theme_onTertiaryContainer">#261900</color>
+
+    <!-- Error colors -->
+    <color name="md_theme_error">#BA1A1A</color>
+    <color name="md_theme_errorContainer">#FFDAD6</color>
+    <color name="md_theme_onError">#FFFFFF</color>
+    <color name="md_theme_onErrorContainer">#410002</color>
+
+    <!-- Background colors -->
+    <color name="md_theme_background">#FEFBFF</color>
+    <color name="md_theme_onBackground">#1B1B1F</color>
+
+    <!-- Surface colors -->
+    <color name="md_theme_surface">#FEFBFF</color>
+    <color name="md_theme_onSurface">#1B1B1F</color>
+    <color name="md_theme_surfaceVariant">#E3E1EC</color>
+    <color name="md_theme_onSurfaceVariant">#46464F</color>
+    <color name="md_theme_inverseSurface">#303036</color>
+    <color name="md_theme_inverseOnSurface">#F2F0F7</color>
+
+    <!-- Outline colors -->
+    <color name="md_theme_outline">#777680</color>
+    <color name="md_theme_outlineVariant">#C7C5D0</color>
+
+    <!-- Other colors -->
+    <color name="md_theme_inversePrimary">#BBC3FF</color>
+    <color name="md_theme_shadow">#000000</color>
+    <color name="md_theme_surfaceTint">#5B6ABF</color>
+    <color name="md_theme_scrim">#000000</color>
+</resources>
