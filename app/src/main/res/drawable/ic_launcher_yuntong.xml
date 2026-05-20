@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Background circle -->
+    <path
+        android:fillColor="#5B6ABF"
+        android:pathData="M54,54m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0" />
+    
+    <!-- Stylized '云' (cloud) character path -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M38,60 
+            Q34,60 32,57 Q30,54 32,51 
+            Q31,48 33,45 Q35,42 38,42 
+            Q40,38 44,36 Q48,34 52,36 
+            Q56,34 60,36 Q64,38 65,42 
+            Q68,41 70,44 Q72,47 71,50 
+            Q74,51 74,54 Q74,57 72,59 
+            Q70,61 67,61 Z" />
+    
+    <!-- Arrow up symbol (VPN/network) -->
+    <path
+        android:fillColor="#E8EAF6"
+        android:pathData="M44,69 L50,60 L48,60 L48,50 L52,50 L52,60 L50,60 Z" 
+        android:strokeColor="#E8EAF6"
+        android:strokeWidth="1" />
+</vector>
