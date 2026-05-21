@@ -73,5 +73,6 @@ org-mockito-mockito-inline = { module = "org.mockito:mockito-inline", version.re
 junit = { module = "junit:junit", version.ref = "junit" }
 
 [plugins]
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
