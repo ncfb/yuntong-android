@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    id("com.jaredsburrows.license")
 }
 
 android {
@@ -13,13 +15,55 @@ android {
         versionCode = 100
         versionName = "1.0.0"
         multiDexEnabled = true
+
+        val abiFilterList = (properties["ABI_FILTERS"] as? String)?.split(';')
+        splits {
+            abi {
+                isEnable = true
+                reset()
+                if (abiFilterList != null && abiFilterList.isNotEmpty()) {
+                    include(*abiFilterList.toTypedArray())
+                } else {
+                    include(
+                        "arm64-v8a",
+                        "armeabi-v7a",
+                        "x86_64",
+                        "x86"
+                    )
+                }
+                isUniversalApk = abiFilterList.isNullOrEmpty()
+            }
+        }
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+
+    flavorDimensions.add("distribution")
+    productFlavors {
+        create("fdroid") {
+            dimension = "distribution"
+            applicationIdSuffix = ".fdroid"
+            buildConfigField("String", "DISTRIBUTION", ""F-Droid"")
+        }
+        create("playstore") {
+            dimension = "distribution"
+            buildConfigField("String", "DISTRIBUTION", ""Play Store"")
+        }
+    }
+
+    sourceSets {
+        getByName("main") {
+            jniLibs.srcDirs("libs")
         }
     }
 
@@ -29,35 +73,58 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+        }
+    }
+
     buildFeatures {
         viewBinding = true
         buildConfig = true
+    }
+
+    packaging {
+        jniLibs {
+            useLegacyPackaging = true
+        }
     }
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
-    implementation("androidx.core:core-ktx:1.15.0")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("androidx.activity:activity:1.10.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-    implementation("androidx.preference:preference-ktx:1.2.1")
-    implementation("androidx.recyclerview:recyclerview:1.4.0")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0")
-    implementation("androidx.viewpager2:viewpager2:1.1.0")
-    implementation("androidx.fragment:fragment-ktx:1.8.5")
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("com.tencent:mmkv-static:1.3.16")
-    implementation("com.google.code.gson:gson:2.11.0")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
-    implementation("androidx.work:work-runtime-ktx:2.10.0")
-    implementation("androidx.work:work-multiprocess:2.10.0")
-    implementation("androidx.multidex:multidex:2.0.1")
-    testImplementation("junit:junit:4.13.2")
-    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.preference.ktx)
+    implementation(libs.recyclerview)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.viewpager2)
+    implementation(libs.androidx.fragment)
+    implementation(libs.material)
+    implementation(libs.toasty)
+    implementation(libs.editorkit)
+    implementation(libs.flexbox)
+    implementation(libs.mmkv.static)
+    implementation(libs.gson)
+    implementation(libs.okhttp)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.language.base)
+    implementation(libs.language.json)
+    implementation(libs.quickie.foss)
+    implementation(libs.core)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.work.runtime.ktx)
+    implementation(libs.work.multiprocess)
+    implementation(libs.multidex)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation(libs.org.mockito.mockito.inline)
+    testImplementation(libs.mockito.kotlin)
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
 }
