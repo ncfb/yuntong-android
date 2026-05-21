@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    id("com.jaredsburrows.license")
 }
 
 android {
