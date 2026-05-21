@@ -51,6 +51,15 @@ dependencies {
     implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.fragment)
     implementation(libs.material)
+
+    // Jitpack Libraries
+    implementation(libs.toasty)
+    implementation(libs.editorkit)
+    implementation(libs.flexbox)
+    implementation(libs.language.base)
+    implementation(libs.language.json)
+    implementation(libs.quickie.foss)
+    implementation(libs.core)
     implementation(libs.mmkv.static)
     implementation(libs.gson)
     implementation(libs.okhttp)
